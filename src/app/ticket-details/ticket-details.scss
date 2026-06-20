@@ -1,0 +1,30 @@
+:host {
+	display: block;
+	padding: 16px;
+}
+.ticket-form {
+	display: grid;
+	gap: 12px;
+	grid-template-columns: 1fr;
+	max-width: 600px;
+}
+.ticket-form .full { grid-column: 1 / -1; }
+.actions { display:flex; justify-content:flex-end; margin-top:8px }
+
+.ticket-cards {
+	margin-top: 32px;
+}
+
+.ticket-cards h2 {
+	margin-bottom: 16px;
+}
+
+.cards-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 16px;
+}
+
+.ticket-card {
+	padding: 12px;
+}

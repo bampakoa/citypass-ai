@@ -1,0 +1,45 @@
+<form class="ticket-form" (submit)="onSubmit(); $event.preventDefault()">
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Car number</mat-label>
+    <input matInput [formField]="ticketForm.carNumber" />
+    <mat-error *ngIf="ticketForm.carNumber().touched() && ticketForm.carNumber().errors().length">
+      Car number is required.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Arrival date</mat-label>
+    <input matInput type="text" [matDatepicker]="arrivalPicker" [formField]="ticketForm.arrivalDate" />
+    <mat-datepicker-toggle matSuffix [for]="arrivalPicker"></mat-datepicker-toggle>
+    <mat-datepicker #arrivalPicker></mat-datepicker>
+    <mat-error *ngIf="ticketForm.arrivalDate().touched() && ticketForm.arrivalDate().errors().length">
+      Arrival date is required.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full">
+    <mat-label>Parking location</mat-label>
+    <input matInput [formField]="ticketForm.location" />
+    <mat-error *ngIf="ticketForm.location().touched() && ticketForm.location().errors().length">
+      Parking location is required.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-flat-button color="primary" type="submit" [disabled]="ticketForm().invalid()">Create ticket</button>
+  </div>
+</form>
+
+<section class="ticket-cards" *ngIf="tickets().length">
+  <h2>Created tickets</h2>
+  <div class="cards-grid">
+    <mat-card *ngFor="let ticket of tickets()" class="ticket-card mat-elevation-z2">
+      <mat-card-title>{{ ticket.carNumber }}</mat-card-title>
+      <mat-card-subtitle>{{ ticket.location }}</mat-card-subtitle>
+      <mat-card-content>
+        <p><strong>Arrival:</strong> {{ ticket.arrivalDate | date:'medium' }}</p>
+        <p><strong>Created:</strong> {{ ticket.createdAt | date:'short' }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>

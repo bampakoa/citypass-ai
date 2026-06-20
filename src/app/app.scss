@@ -1,0 +1,17 @@
+.app-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+main {
+  padding: 24px;
+}
